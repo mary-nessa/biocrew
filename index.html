@@ -87,8 +87,7 @@
             <div class="content">
               <h3>Why Choose BIO CREW?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                BIOCREW stands out for its expert biomedical engineers, offering innovative solutions through a proven track record of success. With a commitment to collaboration, the team customizes solutions for unique healthcare challenges, ensuring a deep impact on patient outcomes. BIOCREW's adaptability to dynamic advancements in biomedical engineering positions it as a forward-thinking choice for those seeking cutting-edge and globally impactful solutions.
               </p>
               <div class="text-center">
                 <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
@@ -125,19 +124,13 @@
           </div>          
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+            <h3>BIOCREW (Biomedical Engineering Crew)</h3>
+            <p>BIOCREW is comprised of a diverse group of biomedical engineers, each bringing unique skills and expertise to the team. Team members may include specialists in areas such as medical imaging, biomaterials, biomechanics, and medical device design.</p>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <h4 class="title"><a href="">Collaboration</a></h4>
+              <p class="description">BIOCREW collaborates closely with healthcare professionals, research institutions, and industry partners to ensure that their solutions are both scientifically sound and practical for real-world applications.</p>
             </div>
 
 
@@ -150,22 +143,22 @@
 
     <!-- ======= Services Section ======= -->
     <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
+    
+    <section id="staff-upload" class="appointment section-bg">
       <div class="container">
-
         <div class="section-title">
-          <h2>PROJECT WORK</h2>
-          <p>This the BIOCREW WORK SPACE... We can upload files of our grop work to this space and also view it.</p>
+          <h2>UPLOAD STAFF</h2>
+          <p>This is the BIOCREW Staff Upload Space. You can upload files related to staff members here.</p>
         </div>
-    <form action="upload_handler.php" method="post" enctype="multipart/form-data">
-        <label for="projectFile">UPLOAD PROJECT:</label>
-        <input type="file" name="projectFile" id="projectFile" required>
-        <input type="submit" name="submit" value="Upload">
-    </form>
-
-
+        <div id="uploadResult"></div>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <label for="staffFile">UPLOAD STAFF FILE:</label>
+          <input type="file" name="staffFile" id="staffFile" required>
+          <button type="button" onclick="uploadFile()">Upload</button>
+        </form>
       </div>
-    </section><!-- End Appointment Section -->
+    </section>
+          <!-- End Appointment Section -->
 
     <!-- ======= Departments Section ======= -->
 
@@ -229,7 +222,7 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Thank you for your interest in BIOCREW. If you have any inquiries, collaboration opportunities, or if you simply want to learn more about our biomedical engineering initiatives, please feel free to get in touch with us</p>
         </div>
       </div>
 
@@ -241,19 +234,19 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Makerere, Kampala</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p>innocentwamani6@gmail.com</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p>+256 754669627</p>
               </div>
 
             </div>
@@ -293,6 +286,36 @@
 
         <!-- JavaScript to handle modal and form submission -->
         <script>
+    function uploadFile() {
+      const fileInput = document.getElementById('staffFile');
+      const uploadResult = document.getElementById('uploadResult');
+
+      if (fileInput.files.length === 0) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        // Simulate a successful upload
+        // In a real application, you would send the file data to the server using AJAX
+        // and handle the response accordingly
+        uploadResult.innerHTML = '<p style="color: green;">Upload was successful.</p>';
+
+        // Refresh the page after a short delay (adjust as needed)
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
+      };
+
+      reader.onerror = function () {
+        uploadResult.innerHTML = '<p style="color: red;">Error uploading file.</p>';
+      };
+
+      reader.readAsDataURL(file);
+    }
             const openForm = document.getElementById("openForm");
             const closeForm = document.getElementById("closeForm");
             const contactModal = document.getElementById("contactModal");
